@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/RestAssuredTestGenerator/src-gen" creationIcons="false"
+    editDirectory="/RestAssuredTestGenerator.edit/src-gen" editorDirectory="/RestAssuredTestGenerator.editor/src-gen"
+    modelPluginID="RestAssuredTestGenerator" modelName="RestAssuredTestGenerator"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="17.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>restAssuredTestGenerator.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="RestAssuredTestGenerator" disposableProviderFactory="true"
+      ecorePackage="restAssuredTestGenerator.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="restAssuredTestGenerator.ecore#//HttpMethod">
+      <genEnumLiterals ecoreEnumLiteral="restAssuredTestGenerator.ecore#//HttpMethod/GET"/>
+      <genEnumLiterals ecoreEnumLiteral="restAssuredTestGenerator.ecore#//HttpMethod/POST"/>
+      <genEnumLiterals ecoreEnumLiteral="restAssuredTestGenerator.ecore#//HttpMethod/PUT"/>
+      <genEnumLiterals ecoreEnumLiteral="restAssuredTestGenerator.ecore#//HttpMethod/DELETE"/>
+      <genEnumLiterals ecoreEnumLiteral="restAssuredTestGenerator.ecore#//HttpMethod/PATCH"/>
+    </genEnums>
+    <genClasses ecoreClass="restAssuredTestGenerator.ecore#//Program">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference restAssuredTestGenerator.ecore#//Program/classDefs"/>
+    </genClasses>
+    <genClasses ecoreClass="restAssuredTestGenerator.ecore#//ClassDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restAssuredTestGenerator.ecore#//ClassDef/className"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restAssuredTestGenerator.ecore#//ClassDef/baseUrl"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference restAssuredTestGenerator.ecore#//ClassDef/tests"/>
+    </genClasses>
+    <genClasses ecoreClass="restAssuredTestGenerator.ecore#//Test">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restAssuredTestGenerator.ecore#//Test/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference restAssuredTestGenerator.ecore#//Test/request"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference restAssuredTestGenerator.ecore#//Test/validate"/>
+    </genClasses>
+    <genClasses ecoreClass="restAssuredTestGenerator.ecore#//Request">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference restAssuredTestGenerator.ecore#//Request/method"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference restAssuredTestGenerator.ecore#//Request/requestElements"/>
+    </genClasses>
+    <genClasses ecoreClass="restAssuredTestGenerator.ecore#//Method">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restAssuredTestGenerator.ecore#//Method/httpMethod"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restAssuredTestGenerator.ecore#//Method/optionalPath"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="restAssuredTestGenerator.ecore#//RequestElement"/>
+    <genClasses ecoreClass="restAssuredTestGenerator.ecore#//Url">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restAssuredTestGenerator.ecore#//Url/value"/>
+    </genClasses>
+    <genClasses ecoreClass="restAssuredTestGenerator.ecore#//Headers">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference restAssuredTestGenerator.ecore#//Headers/headers"/>
+    </genClasses>
+    <genClasses ecoreClass="restAssuredTestGenerator.ecore#//Header">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restAssuredTestGenerator.ecore#//Header/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restAssuredTestGenerator.ecore#//Header/value"/>
+    </genClasses>
+    <genClasses ecoreClass="restAssuredTestGenerator.ecore#//QueryParams">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference restAssuredTestGenerator.ecore#//QueryParams/queryParams"/>
+    </genClasses>
+    <genClasses ecoreClass="restAssuredTestGenerator.ecore#//QueryParam">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restAssuredTestGenerator.ecore#//QueryParam/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restAssuredTestGenerator.ecore#//QueryParam/value"/>
+    </genClasses>
+    <genClasses ecoreClass="restAssuredTestGenerator.ecore#//Body">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restAssuredTestGenerator.ecore#//Body/rawValue"/>
+    </genClasses>
+    <genClasses ecoreClass="restAssuredTestGenerator.ecore#//Validate">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference restAssuredTestGenerator.ecore#//Validate/validateElements"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="restAssuredTestGenerator.ecore#//ValidateElement"/>
+    <genClasses ecoreClass="restAssuredTestGenerator.ecore#//StatusCode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restAssuredTestGenerator.ecore#//StatusCode/statusCode"/>
+    </genClasses>
+    <genClasses ecoreClass="restAssuredTestGenerator.ecore#//ResponseHeaders">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference restAssuredTestGenerator.ecore#//ResponseHeaders/headers"/>
+    </genClasses>
+    <genClasses ecoreClass="restAssuredTestGenerator.ecore#//ResponseBody">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference restAssuredTestGenerator.ecore#//ResponseBody/elements"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="restAssuredTestGenerator.ecore#//ResponseBodyElement"/>
+    <genClasses ecoreClass="restAssuredTestGenerator.ecore#//BodyContains">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restAssuredTestGenerator.ecore#//BodyContains/fields"/>
+    </genClasses>
+    <genClasses ecoreClass="restAssuredTestGenerator.ecore#//BodyExact">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference restAssuredTestGenerator.ecore#//BodyExact/pairs"/>
+    </genClasses>
+    <genClasses ecoreClass="restAssuredTestGenerator.ecore#//BodyExactPair">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restAssuredTestGenerator.ecore#//BodyExactPair/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restAssuredTestGenerator.ecore#//BodyExactPair/value"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

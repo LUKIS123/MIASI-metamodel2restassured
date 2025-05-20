@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<restAssuredTestGenerator:Program xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:restAssuredTestGenerator="http://www.example.org/restAssuredTestGenerator">
+  <classDefs className="pl.edu.pwr.myExampleTestClass" baseUrl="http://localhost:8080/api/users">
+    <tests name="myExampleTest ">
+      <request>
+        <method optionalPath="/test"/>
+        <requestElements xsi:type="restAssuredTestGenerator:Url" value="https://api.example.com/users"/>
+        <requestElements xsi:type="restAssuredTestGenerator:Headers">
+          <headers key="Authorization" value="Bearer token"/>
+        </requestElements>
+        <requestElements xsi:type="restAssuredTestGenerator:QueryParams">
+          <queryParams key="id" value="123"/>
+        </requestElements>
+      </request>
+      <validate>
+        <validateElements xsi:type="restAssuredTestGenerator:StatusCode" statusCode="200"/>
+        <validateElements xsi:type="restAssuredTestGenerator:ResponseBody">
+          <elements xsi:type="restAssuredTestGenerator:BodyContains">
+            <fields>username</fields>
+            <fields>password</fields>
+            <fields>email</fields>
+          </elements>
+          <elements xsi:type="restAssuredTestGenerator:BodyExact">
+            <pairs key="list[0].id" value="123"/>
+            <pairs key="name" value="John Doe"/>
+            <pairs key="age" value="30"/>
+          </elements>
+        </validateElements>
+        <validateElements xsi:type="restAssuredTestGenerator:ResponseHeaders">
+          <headers key="Content-Type" value="application/json"/>
+          <headers key="Location" value="https://api.example.com/users/123"/>
+        </validateElements>
+      </validate>
+    </tests>
+    <tests name="myExampleTest2">
+      <request>
+        <method optionalPath="/test"/>
+        <requestElements xsi:type="restAssuredTestGenerator:Url" value="https://api.example.com/users"/>
+        <requestElements xsi:type="restAssuredTestGenerator:Headers">
+          <headers key="Authorization" value="Bearer token"/>
+        </requestElements>
+        <requestElements xsi:type="restAssuredTestGenerator:QueryParams">
+          <queryParams key="id" value="123"/>
+        </requestElements>
+        <requestElements xsi:type="restAssuredTestGenerator:Body" rawValue="{ &quot;orderDate&quot;: &quot;2025-03-27T15:59:42.752Z&quot;, &quot;customerName&quot;: &quot;string&quot;, &quot;items&quot;: [{ &quot;productName&quot;: &quot;string&quot;, &quot;quantity&quot;: 0, &quot;price&quot;: 0 }] }"/>
+      </request>
+      <validate>
+        <validateElements xsi:type="restAssuredTestGenerator:StatusCode" statusCode="200"/>
+        <validateElements xsi:type="restAssuredTestGenerator:ResponseBody">
+          <elements xsi:type="restAssuredTestGenerator:BodyContains">
+            <fields>username</fields>
+            <fields>password</fields>
+            <fields>email</fields>
+          </elements>
+          <elements xsi:type="restAssuredTestGenerator:BodyExact">
+            <pairs key="list[0].id" value="123"/>
+            <pairs key="name" value="John Doe"/>
+            <pairs key="age" value="30"/>
+          </elements>
+        </validateElements>
+        <validateElements xsi:type="restAssuredTestGenerator:ResponseHeaders">
+          <headers key="Content-Type" value="application/json"/>
+          <headers key="Location" value="https://api.example.com/users/123"/>
+        </validateElements>
+      </validate>
+    </tests>
+  </classDefs>
+</restAssuredTestGenerator:Program>
