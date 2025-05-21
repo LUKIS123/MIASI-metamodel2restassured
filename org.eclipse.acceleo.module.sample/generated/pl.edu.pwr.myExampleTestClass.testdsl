@@ -1,0 +1,40 @@
+CLASS pl.edu.pwr.myExampleTestClass {
+    URL "http://localhost:8080/api/users"
+    
+    TEST myExampleTest  {
+        REQUEST {
+            METHOD org.eclipse.emf.ecore.impl.DynamicEObjectImpl@352e787a (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4784013e (name: Method) (instanceClassName: null) (abstract: false, interface: false)) "GET"
+            URL "/test"
+            HEADERS {
+            }
+            QUERY_PARAMS {
+            }
+            BODY
+"""
+org.eclipse.emf.ecore.impl.DynamicEObjectImpl@7ec25216 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@6d4a65c6 (name: Url) (instanceClassName: null) (abstract: false, interface: false))
+"""
+        }
+
+        ASSERT {
+            STATUS org.eclipse.emf.ecore.impl.DynamicEObjectImpl@f72203 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@5cf87cfd (name: StatusCode) (instanceClassName: null) (abstract: false, interface: false))org.eclipse.emf.ecore.impl.DynamicEObjectImpl@377008df (eClass: org.eclipse.emf.ecore.impl.EClassImpl@27b71f50 (name: ResponseBody) (instanceClassName: null) (abstract: false, interface: false))org.eclipse.emf.ecore.impl.DynamicEObjectImpl@540dbda9 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@2571066a (name: ResponseHeaders) (instanceClassName: null) (abstract: false, interface: false))
+        }
+    }
+    TEST myExampleTest2 {
+        REQUEST {
+            METHOD org.eclipse.emf.ecore.impl.DynamicEObjectImpl@22bb5646 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4784013e (name: Method) (instanceClassName: null) (abstract: false, interface: false)) "GET"
+            URL "/test"
+            HEADERS {
+            }
+            QUERY_PARAMS {
+            }
+            BODY
+"""
+org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1be59f28 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@6d4a65c6 (name: Url) (instanceClassName: null) (abstract: false, interface: false))
+"""
+        }
+
+        ASSERT {
+            STATUS org.eclipse.emf.ecore.impl.DynamicEObjectImpl@2bc9a775 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@5cf87cfd (name: StatusCode) (instanceClassName: null) (abstract: false, interface: false))org.eclipse.emf.ecore.impl.DynamicEObjectImpl@27b000f7 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@27b71f50 (name: ResponseBody) (instanceClassName: null) (abstract: false, interface: false))org.eclipse.emf.ecore.impl.DynamicEObjectImpl@42f9c19a (eClass: org.eclipse.emf.ecore.impl.EClassImpl@2571066a (name: ResponseHeaders) (instanceClassName: null) (abstract: false, interface: false))
+        }
+    }
+}
