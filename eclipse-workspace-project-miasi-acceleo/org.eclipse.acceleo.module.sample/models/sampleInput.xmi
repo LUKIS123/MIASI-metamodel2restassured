@@ -69,5 +69,23 @@
         </validateElements>
       </validate>
     </tests>
+    <tests name="exampleApiTest">
+      <request>
+        <method optionalPath="/1"/>
+      </request>
+      <validate>
+        <validateElements xsi:type="restAssuredTestGenerator:StatusCode" statusCode="200"/>
+        <validateElements xsi:type="restAssuredTestGenerator:ResponseBody">
+          <elements xsi:type="restAssuredTestGenerator:BodyContains">
+            <fields>items</fields>
+          </elements>
+          <elements xsi:type="restAssuredTestGenerator:BodyExact">
+            <pairs key="id" value="1"/>
+            <pairs key="customerName" value="Jan Kowalski"/>
+            <pairs key="items[0].productName" value="Laptop"/>
+          </elements>
+        </validateElements>
+      </validate>
+    </tests>
   </classDefs>
 </restAssuredTestGenerator:Program>

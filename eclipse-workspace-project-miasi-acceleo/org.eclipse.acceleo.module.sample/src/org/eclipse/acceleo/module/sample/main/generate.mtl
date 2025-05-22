@@ -1,0 +1,12 @@
+[module generate('http://www.example.org/restAssuredTestGenerator')]
+
+[comment encoding = UTF-8 /]
+
+[template public generateTestClass(testClass : ClassDef)] 
+[comment @main /]
+[file (testClass.className.concat('.testdsl'), false, 'UTF-8')]
+CLASS [testClass.className/] {
+ 
+}
+[/file]
+[/template]

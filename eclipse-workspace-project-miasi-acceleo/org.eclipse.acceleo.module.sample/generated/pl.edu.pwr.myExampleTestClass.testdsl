@@ -1,0 +1,95 @@
+CLASS pl.edu.pwr.myExampleTestClass {
+    URL "http://localhost:8080/api/users"
+    
+    TEST myExampleTest  {
+        REQUEST {
+            METHOD GET "/test"
+
+			URL "https://api.example.com/users"
+
+			HEADERS {
+				"Authorization": "Bearer token"
+			}
+
+			QUERY_PARAMS { 
+				"id" = "123"
+			}
+
+        }
+
+        ASSERT {
+			STATUS 200
+			
+			BODY_CONTAINS
+				"username"
+				"password"
+				"email"
+			
+			BODY_EXACT
+				"list[0].id" = "123"
+				"name" = "John Doe"
+				"age" = "30"
+
+			HEADER
+				"Content-Type": "application/json"
+				"Location": "https://api.example.com/users/123"
+        }
+    }
+    TEST myExampleTest2 {
+        REQUEST {
+            METHOD GET "/test"
+
+			URL "https://api.example.com/users"
+
+			HEADERS {
+				"Authorization": "Bearer token"
+			}
+
+			QUERY_PARAMS { 
+				"id" = "123"
+			}
+
+			BODY """{ "orderDate": "2025-03-27T15:59:42.752Z", "customerName": "string", "items": [{ "productName": "string", "quantity": 0, "price": 0 }] }"""
+        }
+
+        ASSERT {
+			STATUS 200
+			
+			BODY_CONTAINS
+				"username"
+				"password"
+				"email"
+			
+			BODY_EXACT
+				"list[0].id" = "123"
+				"name" = "John Doe"
+				"age" = "30"
+
+			HEADER
+				"Content-Type": "application/json"
+				"Location": "https://api.example.com/users/123"
+        }
+    }
+    TEST exampleApiTest {
+        REQUEST {
+            METHOD GET "/1"
+
+
+
+
+        }
+
+        ASSERT {
+			STATUS 200
+			
+			BODY_CONTAINS
+				"items"
+			
+			BODY_EXACT
+				"id" = "1"
+				"customerName" = "Jan Kowalski"
+				"items[0].productName" = "Laptop"
+
+        }
+    }
+}
