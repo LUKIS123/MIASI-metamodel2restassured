@@ -30,7 +30,7 @@ public interface Program extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Class Defs</em>' containment reference list.
 	 * @see restAssuredTestGenerator.RestAssuredTestGeneratorPackage#getProgram_ClassDefs()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EList<ClassDef> getClassDefs();

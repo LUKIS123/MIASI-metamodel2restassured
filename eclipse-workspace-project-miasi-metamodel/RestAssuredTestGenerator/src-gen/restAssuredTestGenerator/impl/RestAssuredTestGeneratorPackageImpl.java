@@ -895,7 +895,7 @@ public class RestAssuredTestGeneratorPackageImpl extends EPackageImpl implements
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProgram_ClassDefs(), this.getClassDef(), null, "classDefs", null, 0, -1, Program.class,
+		initEReference(getProgram_ClassDefs(), this.getClassDef(), null, "classDefs", null, 1, -1, Program.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -905,7 +905,7 @@ public class RestAssuredTestGeneratorPackageImpl extends EPackageImpl implements
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClassDef_BaseUrl(), ecorePackage.getEString(), "baseUrl", null, 0, 1, ClassDef.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getClassDef_Tests(), this.getTest(), null, "tests", null, 0, -1, ClassDef.class, !IS_TRANSIENT,
+		initEReference(getClassDef_Tests(), this.getTest(), null, "tests", null, 1, -1, ClassDef.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 

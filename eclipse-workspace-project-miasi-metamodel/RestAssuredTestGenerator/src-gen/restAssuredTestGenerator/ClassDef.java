@@ -103,7 +103,7 @@ public interface ClassDef extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Tests</em>' containment reference list.
 	 * @see restAssuredTestGenerator.RestAssuredTestGeneratorPackage#getClassDef_Tests()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EList<Test> getTests();
