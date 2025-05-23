@@ -6,7 +6,64 @@
 [comment @main /]
 [file (testClass.className.concat('.testdsl'), false, 'UTF-8')]
 CLASS [testClass.className/] {
- 
+    URL "[testClass.baseUrl/]"
+    
+    [for (test : Test | testClass.tests)]
+    TEST [test.name/] {
+        REQUEST {
+            METHOD [test.request.method.httpMethod.toString()/] "[test.request.method.optionalPath.toString()/]"
+			[if  (test.request.requestElements->exists(oclIsTypeOf(Url)))]
+			URL "[test.request.requestElements->filter(Url).value/]"
+			[/if]
+			[if (test.request.requestElements->exists(oclIsTypeOf(Headers)))]
+			HEADERS {
+				[for (p : Header | test.request.requestElements->filter(Headers).headers)]
+				"[p.key/]": "[p.value/]"
+				[/for]
+			}
+			[/if]
+			[if (test.request.requestElements->exists(oclIsTypeOf(QueryParams)))]
+			QUERY_PARAMS { 
+				[for (p : QueryParam | test.request.requestElements->filter(QueryParams).queryParams)]
+				"[p.key/]" = "[p.value/]"
+				[/for]
+			}
+			[/if]
+			[if  (test.request.requestElements->exists(oclIsTypeOf(Body)))]
+			BODY """[test.request.requestElements->filter(Body).rawValue/]"""
+			[/if]
+        }
+		[if (test.validate.validateElements->first().oclIsUndefined())]
+		// error: assert block should have at least one element
+		[else]
+        ASSERT {
+			[if (test.validate.validateElements->exists(oclIsTypeOf(StatusCode)))]
+			STATUS [test.validate.validateElements->filter(StatusCode).statusCode.toString()/]
+			[/if]
+			[if (test.validate.validateElements->exists(oclIsTypeOf(ResponseBody)))]
+				[if (test.validate.validateElements->filter(ResponseBody).elements->exists(oclIsTypeOf(BodyContains)))]
+			BODY_CONTAINS
+				[for (p : String | test.validate.validateElements->filter(ResponseBody).elements->filter(BodyContains).fields)]
+				"[p/]"
+				[/for]
+				[/if]
+				[if (test.validate.validateElements->filter(ResponseBody).elements->exists(oclIsTypeOf(BodyExact)))]
+			BODY_EXACT
+				[for (p : BodyExactPair | test.validate.validateElements->filter(ResponseBody).elements->filter(BodyExact).pairs)]
+				"[p.key/]" = "[p.value/]"
+				[/for]
+				[/if]
+			[/if]
+			[if (test.validate.validateElements->exists(oclIsTypeOf(ResponseHeaders)))]
+			HEADER
+			[for (p : Header | test.validate.validateElements->filter(ResponseHeaders).headers)]
+				"[p.key/]": "[p.value/]"
+			[/for]
+			[/if]
+        }
+		[/if]
+    }
+    [/for]
 }
 [/file]
 [/template]
