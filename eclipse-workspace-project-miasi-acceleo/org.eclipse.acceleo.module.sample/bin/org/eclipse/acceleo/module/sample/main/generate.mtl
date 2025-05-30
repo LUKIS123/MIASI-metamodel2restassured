@@ -6,12 +6,19 @@
 [comment @main /]
 [file (testClass.className.concat('.testdsl'), false, 'UTF-8')]
 CLASS [testClass.className/] {
+	[if (testClass.baseUrl.oclIsUndefined())]
+	[else]
     URL "[testClass.baseUrl/]"
-    
+
+	[/if]
     [for (test : Test | testClass.tests)]
     TEST [test.name/] {
         REQUEST {
+			[if (test.request.method.httpMethod.oclIsUndefined())]
+			// error: request block should have at least: METHOD
+			[else]
             METHOD [test.request.method.httpMethod.toString()/] "[test.request.method.optionalPath.toString()/]"
+			[/if]
 			[if  (test.request.requestElements->exists(oclIsTypeOf(Url)))]
 			URL "[test.request.requestElements->filter(Url).value/]"
 			[/if]
@@ -34,7 +41,7 @@ CLASS [testClass.className/] {
 			[/if]
         }
 		[if (test.validate.validateElements->first().oclIsUndefined())]
-		// error: assert block should have at least one element
+		// error: assert block should have at least one element: STATUS|BODY_CONTAINS|BODY_EXACT|HEADER
 		[else]
         ASSERT {
 			[if (test.validate.validateElements->exists(oclIsTypeOf(StatusCode)))]
