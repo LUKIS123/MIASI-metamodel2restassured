@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<restAssuredTestGenerator:Program 
+  xmi:version="2.0" 
+  xmlns:xmi="http://www.omg.org/XMI" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:restAssuredTestGenerator="http://www.example.org/restAssuredTestGenerator"
+  xsi:schemaLocation="http://www.example.org/restAssuredTestGenerator restAssuredTestGenerator.ecore">
+  <classDefs className="InvalidTestClass">
+    <tests name="invalidTest">
+      <request/>
+      <validate>
+        <validateElements xsi:type="restAssuredTestGenerator:StatusCode" statusCode="200"/>
+      </validate>
+    </tests>
+  </classDefs>
+</restAssuredTestGenerator:Program>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<restAssuredTestGenerator:Program 
+  xmi:version="2.0" 
+  xmlns:xmi="http://www.omg.org/XMI" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:restAssuredTestGenerator="http://www.example.org/restAssuredTestGenerator"
+  xsi:schemaLocation="http://www.example.org/restAssuredTestGenerator restAssuredTestGenerator.ecore">
+  <classDefs className="pl.edu.pwr.myExampleTestClass" baseUrl="http://localhost:8085/api/example">
+    <tests name="myExampleTest">
+      <request>
+        <method optionalPath="/1"/>
+      </request>
+      <validate>
+        <validateElements xsi:type="restAssuredTestGenerator:StatusCode" statusCode="200"/>
+        <validateElements xsi:type="restAssuredTestGenerator:ResponseBody">
+          <elements xsi:type="restAssuredTestGenerator:BodyContains">
+            <fields>items</fields>
+          </elements>
+          <elements xsi:type="restAssuredTestGenerator:BodyExact">
+            <pairs key="id" value="1"/>
+            <pairs key="customerName" value="Jan Kowalski"/>
+            <pairs key="items[0].productName" value="Laptop"/>
+          </elements>
+        </validateElements>
+      </validate>
+    </tests>
+  </classDefs>
+</restAssuredTestGenerator:Program>

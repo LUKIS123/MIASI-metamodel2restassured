@@ -20,6 +20,7 @@ import org.eclipse.acceleo.engine.generation.strategy.IAcceleoGenerationStrategy
 import org.eclipse.acceleo.engine.service.AbstractAcceleoGenerator;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.Monitor;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -173,7 +174,7 @@ public class Generate extends AbstractAcceleoGenerator {
      *            This will be used to display progress information to the user.
      * @throws IOException
      *             This will be thrown if any of the output files cannot be saved to disk.
-     * @generated
+     * @generated NOT
      */
     @Override
     public void doGenerate(Monitor monitor) throws IOException {
@@ -194,12 +195,40 @@ public class Generate extends AbstractAcceleoGenerator {
          * use the code below.
          */
 
-        //if (model != null && model.eResource() != null) {
-        //    List<org.eclipse.emf.ecore.resource.Resource.Diagnostic> errors = model.eResource().getErrors();
-        //    for (org.eclipse.emf.ecore.resource.Resource.Diagnostic diagnostic : errors) {
-        //        System.err.println(diagnostic.toString());
-        //    }
-        //}
+        if (model != null && model.eResource() != null) {
+            List<org.eclipse.emf.ecore.resource.Resource.Diagnostic> errors = model.eResource().getErrors();
+            for (org.eclipse.emf.ecore.resource.Resource.Diagnostic diagnostic : errors) {
+                System.err.println(diagnostic.toString());
+            }
+            // Check if there's any classDef element
+            boolean foundClassDef = false;
+            boolean foundTests = false;
+
+            for (TreeIterator<EObject> it = model.eAllContents(); it.hasNext(); ) {
+                EObject obj = it.next();
+                if ("ClassDef".equals(obj.eClass().getName())) {
+                	foundClassDef = true;
+                } else if ("Test".equals(obj.eClass().getName())) {
+                	foundTests = true;
+                }
+                
+                if (foundClassDef && foundTests) {
+                	break;
+                }
+            }
+            
+            if (!foundClassDef) {
+                System.err.println("Model must contain at least one element: CLASS");
+                System.err.println("Please review and correct the model.");            
+                return;
+            }
+            
+            if (!foundTests) {
+            	System.err.println("Warning: The model lacks test definitions. Please add at least one test, otherwise the generated test class will be empty.");
+            }
+        } else {
+        	System.err.println("Model is NULL");
+        }
 
         super.doGenerate(monitor);
     }

@@ -58,9 +58,9 @@
             <fields>email</fields>
           </elements>
           <elements xsi:type="restAssuredTestGenerator:BodyExact">
-            <pairs key="list[0].id" value="420"/>
-            <pairs key="name" value="John Dupa"/>
-            <pairs key="age" value="69"/>
+            <pairs key="list[0].id" value="123"/>
+            <pairs key="name" value="John Doe"/>
+            <pairs key="age" value="30"/>
           </elements>
         </validateElements>
         <validateElements xsi:type="restAssuredTestGenerator:ResponseHeaders">
@@ -74,7 +74,18 @@
         <method optionalPath="/1"/>
       </request>
       <validate>
-	  </validate>
+        <validateElements xsi:type="restAssuredTestGenerator:StatusCode" statusCode="200"/>
+        <validateElements xsi:type="restAssuredTestGenerator:ResponseBody">
+          <elements xsi:type="restAssuredTestGenerator:BodyContains">
+            <fields>items</fields>
+          </elements>
+          <elements xsi:type="restAssuredTestGenerator:BodyExact">
+            <pairs key="id" value="1"/>
+            <pairs key="customerName" value="Jan Kowalski"/>
+            <pairs key="items[0].productName" value="Laptop"/>
+          </elements>
+        </validateElements>
+      </validate>
     </tests>
   </classDefs>
 </restAssuredTestGenerator:Program>

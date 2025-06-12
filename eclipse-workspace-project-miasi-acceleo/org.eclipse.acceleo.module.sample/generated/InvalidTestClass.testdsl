@@ -1,0 +1,10 @@
+CLASS InvalidTestClass {
+    TEST invalidTest {
+        REQUEST {
+			// error: request block must include an element: METHOD
+        }
+        ASSERT {
+			STATUS 200
+        }
+    }
+}
